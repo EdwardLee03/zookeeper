@@ -594,15 +594,16 @@ document.write("Last Published: " + document.lastModified);
         (4bytes) maintained by the parent node, the counter will
         overflow when incremented beyond 2147483647 (resulting in a
         name "&lt;path&gt;-2147483648").</p>
+
 <a name="sc_timeInZk"></a>
-<h3 class="h4">Time in ZooKeeper</h3>
-<p>ZooKeeper tracks time multiple ways:</p>
+<h3 class="h4">Time in ZooKeeper/ZK中的时间</h3>
+<p>ZooKeeper tracks time multiple ways/ZooKeeper以多种方式跟踪时间:</p>
 <ul>
         
 <li>
           
 <p>
-<strong>Zxid</strong>
+<strong>Zxid/事务标识</strong>
 </p>
 
           
@@ -610,7 +611,12 @@ document.write("Last Published: " + document.lastModified);
           form of a <em>zxid</em> (ZooKeeper Transaction Id).
           This exposes the total ordering of all changes to ZooKeeper. Each
           change will have a unique zxid and if zxid1 is smaller than zxid2
-          then zxid1 happened before zxid2.</p>
+          then zxid1 happened before zxid2.
+
+    对ZooKeeper状态的每次更改都会以<em>zxid</em>(事务标识)的形式接收邮票。
+    这暴露了ZooKeeper的所有更改的总排序。
+    每个更改都有一个唯一的zxid，如果zxid1小于zxid2，则zxid1发生在zxid2之前。
+</p>
         
 </li>
 
@@ -618,7 +624,7 @@ document.write("Last Published: " + document.lastModified);
 <li>
           
 <p>
-<strong>Version numbers</strong>
+<strong>Version numbers/版本号</strong>
 </p>
 
           
@@ -626,7 +632,11 @@ document.write("Last Published: " + document.lastModified);
           version numbers of that node. The three version numbers are version
           (number of changes to the data of a znode), cversion (number of
           changes to the children of a znode), and aversion (number of changes
-          to the ACL of a znode).</p>
+          to the ACL of a znode).
+
+    对节点的每次更改都会导致该节点的某个版本号增加。
+    三个版本号是version (znode数据的更改次数)，cversion (znode子节点的更改次数)和aversion (znode ACL的更改次数)。
+</p>
         
 </li>
 
@@ -634,7 +644,7 @@ document.write("Last Published: " + document.lastModified);
 <li>
           
 <p>
-<strong>Ticks</strong>
+<strong>Ticks/滴答计数</strong>
 </p>
 
           
@@ -644,7 +654,12 @@ document.write("Last Published: " + document.lastModified);
           indirectly exposed through the minimum session timeout (2 times the
           tick time); if a client requests a session timeout less than the
           minimum session timeout, the server will tell the client that the
-          session timeout is actually the minimum session timeout.</p>
+          session timeout is actually the minimum session timeout.
+
+    当使用多服务器ZooKeeper时，服务器使用滴答来定义事件的时间，例如状态上传，会话超时，对等体之间的连接超时等。
+    滴答时间仅通过最小会话超时(滴答时间的2倍)间接暴露；
+    如果客户端请求的会话超时小于最小会话超时，则服务器将告诉客户端会话超时实际上是最小会话超时。
+</p>
         
 </li>
 
@@ -652,13 +667,16 @@ document.write("Last Published: " + document.lastModified);
 <li>
           
 <p>
-<strong>Real time</strong>
+<strong>Real time/真实时间</strong>
 </p>
 
           
 <p>ZooKeeper doesn't use real time, or clock time, at all except
           to put timestamps into the stat structure on znode creation and
-          znode modification.</p>
+          znode modification.
+
+    除了在znode创建和znode修改时将时间戳放入stat结构中之外，ZooKeeper根本不使用真实时间或时钟时间。
+</p>
         
 </li>
       
