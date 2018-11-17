@@ -682,9 +682,12 @@ document.write("Last Published: " + document.lastModified);
       
 </ul>
 <a name="sc_zkStatStructure"></a>
-<h3 class="h4">ZooKeeper Stat Structure</h3>
+<h3 class="h4">ZooKeeper Stat Structure/ZK统计结构</h3>
 <p>The Stat structure for each znode in ZooKeeper is made up of the
-      following fields:</p>
+      following fields:
+
+    ZooKeeper中每个znode的Stat结构由以下字段组成：
+</p>
 <ul>
         
 <li>
@@ -694,8 +697,9 @@ document.write("Last Published: " + document.lastModified);
 </p>
 
           
-<p>The zxid of the change that caused this znode to be
-          created.</p>
+<p>The zxid of the change that caused this znode to be created.
+    创建这个znode的更改的zxid。
+</p>
         
 </li>
 
@@ -707,7 +711,9 @@ document.write("Last Published: " + document.lastModified);
 </p>
 
           
-<p>The zxid of the change that last modified this znode.</p>
+<p>The zxid of the change that last modified this znode.
+    最后修改这个znode的更改的zxid。
+</p>
         
 </li>
 
@@ -719,7 +725,9 @@ document.write("Last Published: " + document.lastModified);
 </p>
 
           
-<p>The zxid of the change that last modified children of this znode.</p>
+<p>The zxid of the change that last modified children of this znode.
+    最后修改这个znode的子节点的更改的zxid。
+</p>
         
 </li>
 
@@ -731,8 +739,9 @@ document.write("Last Published: " + document.lastModified);
 </p>
 
           
-<p>The time in milliseconds from epoch when this znode was
-          created.</p>
+<p>The time in milliseconds from epoch when this znode was created.
+    创建这个znode时从纪元开始的时间（以毫秒为单位）。
+</p>
         
 </li>
 
@@ -744,8 +753,9 @@ document.write("Last Published: " + document.lastModified);
 </p>
 
           
-<p>The time in milliseconds from epoch when this znode was last
-          modified.</p>
+<p>The time in milliseconds from epoch when this znode was last modified.
+    最后修改这个znode时的时间（以毫秒为单位）。
+</p>
         
 </li>
 
@@ -757,7 +767,9 @@ document.write("Last Published: " + document.lastModified);
 </p>
 
           
-<p>The number of changes to the data of this znode.</p>
+<p>The number of changes to the data of this znode.
+    这个znode数据的更改次数。
+</p>
         
 </li>
 
@@ -769,7 +781,9 @@ document.write("Last Published: " + document.lastModified);
 </p>
 
           
-<p>The number of changes to the children of this znode.</p>
+<p>The number of changes to the children of this znode.
+    这个znode子节点的更改次数。
+</p>
         
 </li>
 
@@ -780,8 +794,10 @@ document.write("Last Published: " + document.lastModified);
 <strong>aversion</strong>
 </p>
 
-          
-<p>The number of changes to the ACL of this znode.</p>
+
+<p>The number of changes to the ACL of this znode.
+    这个znode ACL的更改次数。
+</p>
         
 </li>
 
@@ -792,10 +808,13 @@ document.write("Last Published: " + document.lastModified);
 <strong>ephemeralOwner</strong>
 </p>
 
-          
+
 <p>The session id of the owner of this znode if the znode is an
           ephemeral node. If it is not an ephemeral node, it will be
-          zero.</p>
+          zero.
+    如果znode是临时节点，则表示这个znode的所有者的会话ID。
+    如果它不是一个临时节点，它将为零。
+</p>
         
 </li>
 
@@ -806,20 +825,24 @@ document.write("Last Published: " + document.lastModified);
 <strong>dataLength</strong>
 </p>
 
-          
-<p>The length of the data field of this znode.</p>
+
+<p>The length of the data field of this znode.
+    这个znode的数据字段的长度。
+</p>
         
 </li>
 
-        
+
 <li>
           
 <p>
 <strong>numChildren</strong>
 </p>
 
-          
-<p>The number of children of this znode.</p>
+
+<p>The number of children of this znode.
+    这个znode的子节点数。
+</p>
         
 </li>
 
