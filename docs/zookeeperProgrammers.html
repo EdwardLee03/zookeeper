@@ -208,50 +208,50 @@ document.write("Last Published: " + document.lastModified);
 <div id="minitoc-area">
 <ul class="minitoc">
 <li>
-<a href="#_introduction">Introduction</a>
+<a href="#_introduction">Introduction/介绍</a>
 </li>
 <li>
-<a href="#ch_zkDataModel">The ZooKeeper Data Model</a>
+<a href="#ch_zkDataModel">The ZooKeeper Data Model/数据模型</a>
 <ul class="minitoc">
 <li>
-<a href="#sc_zkDataModel_znodes">ZNodes</a>
+<a href="#sc_zkDataModel_znodes">ZNodes/数据节点</a>
 <ul class="minitoc">
 <li>
-<a href="#sc_zkDataMode_watches">Watches</a>
+<a href="#sc_zkDataNode_watches">Watches/数据节点监视器</a>
 </li>
 <li>
-<a href="#Data+Access">Data Access</a>
+<a href="#Data+Access">Data Access/数据访问</a>
 </li>
 <li>
-<a href="#Ephemeral+Nodes">Ephemeral Nodes</a>
+<a href="#Ephemeral+Nodes">Ephemeral Nodes/临时节点</a>
 </li>
 <li>
-<a href="#Sequence+Nodes+--+Unique+Naming">Sequence Nodes -- Unique Naming</a>
+<a href="#Sequence+Nodes+--+Unique+Naming">Sequence Nodes -- Unique Naming/序列节点-唯一命名</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#sc_timeInZk">Time in ZooKeeper</a>
+<a href="#sc_timeInZk">Time in ZooKeeper/ZK中的时间</a>
 </li>
 <li>
-<a href="#sc_zkStatStructure">ZooKeeper Stat Structure</a>
+<a href="#sc_zkStatStructure">ZooKeeper Stat Structure/ZK统计结构</a>
 </li>
 </ul>
 </li>
 <li>
-<a href="#ch_zkSessions">ZooKeeper Sessions</a>
+<a href="#ch_zkSessions">ZooKeeper Sessions/ZK会话</a>
 </li>
 <li>
-<a href="#ch_zkWatches">ZooKeeper Watches</a>
+<a href="#ch_zkWatches">ZooKeeper Watches/ZK监视器</a>
 <ul class="minitoc">
 <li>
-<a href="#sc_WatchSemantics">Semantics of Watches</a>
+<a href="#sc_WatchSemantics">Semantics of Watches/监视器的语义</a>
 </li>
 <li>
-<a href="#sc_WatchGuarantees">What ZooKeeper Guarantees about Watches</a>
+<a href="#sc_WatchGuarantees">What ZooKeeper Guarantees about Watches/ZK对监视器的保证</a>
 </li>
 <li>
-<a href="#sc_WatchRememberThese">Things to Remember about Watches</a>
+<a href="#sc_WatchRememberThese">Things to Remember about Watches/关于监视器的事情要记住</a>
 </li>
 </ul>
 </li>
@@ -275,7 +275,7 @@ document.write("Last Published: " + document.lastModified);
 <a href="#sc_ZooKeeperPluggableAuthentication">Pluggable ZooKeeper authentication</a>
 </li>
 <li>
-<a href="#ch_zkGuarantees">Consistency Guarantees</a>
+<a href="#ch_zkGuarantees">Consistency Guarantees/一致性保证</a>
 </li>
 <li>
 <a href="#ch_bindings">Bindings</a>
@@ -297,25 +297,25 @@ document.write("Last Published: " + document.lastModified);
 </ul>
 </li>
 <li>
-<a href="#ch_guideToZkOperations">Building Blocks: A Guide to ZooKeeper Operations</a>
+<a href="#ch_guideToZkOperations">Building Blocks: A Guide to ZooKeeper Operations/构建模块：ZK操作指南</a>
 <ul class="minitoc">
 <li>
-<a href="#sc_errorsZk">Handling Errors</a>
+<a href="#sc_errorsZk">Handling Errors/处理错误</a>
 </li>
 <li>
-<a href="#sc_connectingToZk">Connecting to ZooKeeper</a>
+<a href="#sc_connectingToZk">Connecting to ZooKeeper/连接到ZK</a>
 </li>
 <li>
-<a href="#sc_readOps">Read Operations</a>
+<a href="#sc_readOps">Read Operations/读操作</a>
 </li>
 <li>
-<a href="#sc_writeOps">Write Operations</a>
+<a href="#sc_writeOps">Write Operations/写操作</a>
 </li>
 <li>
-<a href="#sc_handlingWatches">Handling Watches</a>
+<a href="#sc_handlingWatches">Handling Watches/处理监视器</a>
 </li>
 <li>
-<a href="#sc_miscOps">Miscelleaneous ZooKeeper Operations</a>
+<a href="#sc_miscOps">Miscelleaneous ZooKeeper Operations/其他ZK操作</a>
 </li>
 </ul>
 </li>
@@ -323,7 +323,7 @@ document.write("Last Published: " + document.lastModified);
 <a href="#ch_programStructureWithExample">Program Structure, with Simple Example</a>
 </li>
 <li>
-<a href="#ch_gotchas">Gotchas: Common Problems and Troubleshooting</a>
+<a href="#ch_gotchas">Gotchas: Common Problems and Troubleshooting/陷阱：常见问题和故障排除</a>
 </li>
 </ul>
 </div>
@@ -439,7 +439,7 @@ document.write("Last Published: " + document.lastModified);
 
   
 <a name="ch_zkDataModel"></a>
-<h2 class="h3">The ZooKeeper Data Model</h2>
+<h2 class="h3">The ZooKeeper Data Model/数据模型</h2>
 <div class="section">
 <p>ZooKeeper has a hierarchal name space, much like a distributed file
     system. The only difference is that each node in the namespace can have
@@ -447,7 +447,12 @@ document.write("Last Published: " + document.lastModified);
     system that allows a file to also be a directory. Paths to nodes are
     always expressed as canonical, absolute, slash-separated paths; there are
     no relative reference. Any unicode character can be used in a path subject
-    to the following constraints:</p>
+    to the following constraints:
+
+    ZooKeeper具有层次结构的名称空间，非常类似于分布式文件系统。
+    唯一的区别是名称空间中的每个节点都可以包含与之关联的数据以及子节点。
+    节点的路径始终表示为规范，绝对，斜线分隔的路径；没有相对的引用。
+</p>
 <ul>
       
 <li>
