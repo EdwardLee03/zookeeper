@@ -498,7 +498,7 @@ document.write("Last Published: " + document.lastModified);
     
 </ul>
 <a name="sc_zkDataModel_znodes"></a>
-<h3 class="h4">ZNodes</h3>
+<h3 class="h4">ZNodes/数据节点</h3>
 <p>Every node in a ZooKeeper tree is referred to as a
       <em>znode</em>. Znodes maintain a stat structure that
       includes version numbers for data changes, acl changes. The stat
@@ -511,6 +511,9 @@ document.write("Last Published: " + document.lastModified);
       the version it supplies doesn't match the actual version of the data,
       the update will fail. (This behavior can be overridden. For more
       information see... )<em>[tbd...]</em>
+
+    ZooKeeper树中的每个节点都称为<em>znode</em>。
+    Znodes维持统计结构。
 </p>
 <div class="note">
 <div class="label">Note</div>
@@ -528,14 +531,23 @@ document.write("Last Published: " + document.lastModified);
 </div>
 </div>
 <p> A znode is the main abstraction a programmer needs to be aware of. Znodes have
-      several characteristics that are worth mentioning here.</p>
+      several characteristics that are worth mentioning here.
+
+    znode是程序员需要了解的主要抽象。
+    Znodes有几个值得一提的特性。
+</p>
 <a name="sc_zkDataMode_watches"></a>
-<h4>Watches</h4>
+<h4>Watches/监视器</h4>
 <p>Clients can set watches on znodes. Changes to that znode trigger
         the watch and then clear the watch. When a watch triggers, ZooKeeper
         sends the client a notification. More information about watches can be
         found in the section 
-	    <a href="#ch_zkWatches">ZooKeeper Watches</a>.</p>
+	    <a href="#ch_zkWatches">ZooKeeper Watches</a>.
+
+    客户端可以在znodes上设置监视器。
+    对该znode的更改会触发监视器，然后清除监视器。
+    当监视触发时，ZooKeeper会向客户端发送通知。
+</p>
 <a name="Data+Access"></a>
 <h4>Data Access</h4>
 <p>The data stored at each znode in a namespace is read and written
@@ -557,11 +569,17 @@ document.write("Last Published: " + document.lastModified);
         data is to store it on a bulk storage system, such as NFS or HDFS, and
         store pointers to the storage locations in ZooKeeper.</p>
 <a name="Ephemeral+Nodes"></a>
-<h4>Ephemeral Nodes</h4>
+<h4>Ephemeral Nodes/临时节点</h4>
 <p>ZooKeeper also has the notion of ephemeral nodes. These znodes
         exists as long as the session that created the znode is active. When
         the session ends the znode is deleted. Because of this behavior
-        ephemeral znodes are not allowed to have children.</p>
+        ephemeral znodes are not allowed to have children.
+
+    ZooKeeper也有临时节点的概念。
+    只要创建znode的会话处于活动状态，就会存在这些znode。
+    会话结束时，znode将被删除。
+    由于这种行为，临时的znodes不允许有孩子节点。
+</p>
 <a name="Sequence+Nodes+--+Unique+Naming"></a>
 <h4>Sequence Nodes -- Unique Naming</h4>
 <p>When creating a znode you can also request that
