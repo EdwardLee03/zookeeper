@@ -23,7 +23,9 @@
 # or the conf directory that is
 # a sibling of this script's directory
 
+# 二进制文件目录
 ZOOBINDIR="${ZOOBINDIR:-/usr/bin}"
+# ZK安装目录
 ZOOKEEPER_PREFIX="${ZOOBINDIR}/.."
 
 if [ "x$ZOOCFGDIR" = "x" ]
@@ -53,12 +55,12 @@ fi
 
 if [ "x${ZOO_LOG_DIR}" = "x" ]
 then
-    ZOO_LOG_DIR="."
+    ZOO_LOG_DIR="${ZOOKEEPER_PREFIX}/logs"
 fi
 
 if [ "x${ZOO_LOG4J_PROP}" = "x" ]
 then
-    ZOO_LOG4J_PROP="INFO,CONSOLE"
+    ZOO_LOG4J_PROP="INFO,ROLLINGFILE"
 fi
 
 if [ "$JAVA_HOME" != "" ]; then
