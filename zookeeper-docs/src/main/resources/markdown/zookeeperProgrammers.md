@@ -280,38 +280,48 @@ ZooKeeper tracks time multiple ways:
 
 <a name="sc_zkStatStructure"></a>
 
-### ZooKeeper Stat Structure
+### ZooKeeper Stat Structure/统计数据结构
 
 The Stat structure for each znode in ZooKeeper is made up of the
 following fields:
+znode的统计数据结构由以下字段组成：
 
 * **czxid**
-  The zxid of the change that caused this znode to be
-  created.
+  The zxid of the change that caused this znode to be created.
+  创建这个znode的zxid
 * **mzxid**
   The zxid of the change that last modified this znode.
+  最后修改这个znode的zxid
 * **pzxid**
   The zxid of the change that last modified children of this znode.
+  最后修改这个znode的子节点的zxid
 * **ctime**
-  The time in milliseconds from epoch when this znode was
-  created.
+  The time in milliseconds from epoch when this znode was created.
+  创建这个znode时从纪元开始的时间（单位：ms）
 * **mtime**
-  The time in milliseconds from epoch when this znode was last
-  modified.
+  The time in milliseconds from epoch when this znode was last modified.
+  最后修改这个znode时从纪元开始的时间（单位：ms）
 * **version**
   The number of changes to the data of this znode.
+  这个znode的数据的更改次数
 * **cversion**
   The number of changes to the children of this znode.
+  这个znode的子节点的更改次数
 * **aversion**
   The number of changes to the ACL of this znode.
+  这个znode的ACL的更改次数
 * **ephemeralOwner**
-  The session id of the owner of this znode if the znode is an
-  ephemeral node. If it is not an ephemeral node, it will be
-  zero.
+  The session id of the owner of this znode if the znode is an ephemeral node. 
+  If it is not an ephemeral node, it will be zero.
+  如果znode是一个临时节点，则这个znode的所有者的会话ID；
+  如果znode不是一个临时节点，则它将为零。
+  临时节点的所有者
 * **dataLength**
   The length of the data field of this znode.
+  这个znode的数据字段的长度
 * **numChildren**
   The number of children of this znode.
+  这个znode的子节点个数
 
 <a name="ch_zkSessions"></a>
 
